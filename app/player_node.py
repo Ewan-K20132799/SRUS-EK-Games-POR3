@@ -48,11 +48,17 @@ class PlayerNode:
 
 class LinkedPlayerNode:
     Node: None
-    node: Node | None
-    root: Node | None
-    _current_node: Node | None
+    node: Node
+    root: Node
+    _current_node: Node
+    _next_node: Node
+    _prev_node: Node
     _length: int
     _value: None
+    _head: None | LinkedPlayerNode
+    _next: None | LinkedPlayerNode
+    _tail: None | LinkedPlayerNode
+
 
     def __init__(self,
                  player,
@@ -64,6 +70,9 @@ class LinkedPlayerNode:
         self.next = _next
         self._length = len(value)
         self._current_node = self._root
+        self._head = None
+        self._next = None
+        self._tail = None
 
     def __len__(self):
 
@@ -85,21 +94,35 @@ class LinkedPlayerNode:
         return self.tail_node
 
     def push_node(self, node): # Function to add node
+        if self._head:
+            self.root = node
         self._current_node = node
         self._length += 1
         return self
 
-    def push_tail_node(self, node):
+    def push_tail_node(self, node): # Function to add tail node
+        if self._tail:
+            self.next_node = self._tail
         self._current_node = node
         self._length += 1
         return self
 
     def pop_node(self): # Function to delete node
+        if self._head:
+            self._next_node = self._head
+            self._current_node = self._current_node.next_node
+            self._length -= 1
+            return self._head
         self._current_node = self._current_node.next_node
         self._length -= 1
         return self
 
-    def pop_tail_node(self):
+    def pop_tail_node(self): # Function to delete tail node
+        if self._tail:
+            self._current_node = self._current_node.prev_node
+            self.prev_node = self._tail
+            self._length -= 1
+            return self._tail
         self._current_node = self._current_node.prev_node
         self._length -= 1
         return self
