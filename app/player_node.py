@@ -77,13 +77,13 @@ class LinkedPlayerNode: # Linked list
         return self._length
 
     def head(self):
-        return self.head
+        return self._head
 
     def prev_node(self):
-        return self.prev_node
+        return self._prev
 
     def next_node(self):
-        return self.next
+        return self._next
 
     def current_node(self):
         return self._current_node

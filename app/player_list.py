@@ -1,59 +1,57 @@
 from app.player_node import LinkedPlayerNode
 
+
+def is_empty():
+   if LinkedPlayerNode is None:
+       return True
+   else:
+       return False
+
+
 class PlayerList: # Player list class
 
     def __init__(self,
                  value=None,
-                 head=None): # init function for player list class
-        self._head = None
-        _head = head
+                 head=None,
+                 tail=None): # init function for player list class
+        self._head = LinkedPlayerNode(head).node(head)
+        self._tail = LinkedPlayerNode(tail).node(tail)
         _value = value
-
-        if _head is None:
-            _head = LinkedPlayerNode()
-
-    def is_empty(self):
-       if LinkedPlayerNode() is self:
-           return True
-       return False
 
     def push_node(self, node): # Function to add node or head node
         if self._head:
-            self.root = node
-            self._head = node
-            self.push_node(node)
+            LinkedPlayerNode.root = node
+            LinkedPlayerNode._head = node
+            LinkedPlayerNode.push_node(self._head, node)
             return self
         else:
-            return LinkedPlayerNode() # Return node
+            return LinkedPlayerNode(self._head) # Return node
 
     def pop_head_node(self, node):
         if self._head:
-            self._next_node = self._head
-            self._current_node = self._current_node.next_node
-            self.pop_node(node)
+            LinkedPlayerNode._next_node = self._head
+            LinkedPlayerNode._current_node = LinkedPlayerNode._current_node.next_node
+            LinkedPlayerNode.pop_node(node)
             return self
         else:
-            return LinkedPlayerNode()
+            return LinkedPlayerNode(self._head)
 
 
     def push_tail_node(self, node):  # Function to add tail node
         if self._tail:
-          self._next_node = self._tail
-          self._current_node = node
-          self.push_node(node)
+          LinkedPlayerNode._next_node = self._tail
+          LinkedPlayerNode._current_node = node
+          LinkedPlayerNode.push_node(self._tail, node)
           return self
-        return LinkedPlayerNode()
+        return LinkedPlayerNode(self._tail)
 
     def pop_tail_node(self, node): # Function to delete tail node
         if self._tail:
-            self._current_node = self._current_node.prev_node
-            self._prev_node = self._tail
-            self.LinkedPlayerNode.pop_node(node)
+            LinkedPlayerNode._current_node = LinkedPlayerNode._current_node.prev_node
+            LinkedPlayerNode._prev_node = self._tail
+            LinkedPlayerNode.pop_node(node)
             return self
+        return LinkedPlayerNode(self._tail)
 
-
-    def __repr__(self):
-        class_name = self.__class__.__name__
-        return f"Player({self.uid}, {class_name}{self._value}, {self._value})"
 
 
