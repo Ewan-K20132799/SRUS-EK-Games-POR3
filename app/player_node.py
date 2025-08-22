@@ -1,5 +1,10 @@
+from __future__ import annotations
+
+from poetry.console.commands import self
+
 from player import Player
 
+from typing import Any, Iterator
 
 def key_uid(Player):
     player = Player
@@ -43,6 +48,7 @@ class PlayerNode:
 
 class LinkedPlayerNode:
     Node: None
+    node: Node | None
     root: Node | None
     _current_node: Node | None
     _length: int
@@ -51,11 +57,12 @@ class LinkedPlayerNode:
     def __init__(self,
                  player,
                  value=list[int],
-                 _next: Node | None = None):
+                 _next: Node | None = None
+                 ) -> None:
         self._root = player
         self._value = value
         self.next = _next
-        self._length = 0
+        self._length = len(value)
         self._current_node = self._root
 
     def __len__(self):
@@ -65,8 +72,8 @@ class LinkedPlayerNode:
     def head(self):
         return self.head
 
-    def prev(self):
-        return self._value
+    def prev_node(self):
+        return self.prev_node
 
     def next_node(self):
         return self.next
@@ -74,8 +81,28 @@ class LinkedPlayerNode:
     def current_node(self):
         return self._current_node
 
-    def prev_node(self):
-        return self.prev_node
+    def tail_node(self):
+        return self.tail_node
+
+    def push_node(self, node): # Function to add node
+        self._current_node = node
+        self._length += 1
+        return self
+
+    def push_tail_node(self, node):
+        self._current_node = node
+        self._length += 1
+        return self
+
+    def pop_node(self): # Function to delete node
+        self._current_node = self._current_node.next_node
+        self._length -= 1
+        return self
+
+    def pop_tail_node(self):
+        self._current_node = self._current_node.prev_node
+        self._length -= 1
+        return self
 
     def __str__(self):
         return str(self.value)
@@ -83,3 +110,6 @@ class LinkedPlayerNode:
     def __repr__(self):
         class_name = self.__class__.__name__
         return f"Player({self.uid}, {class_name}{self._value}, {self._value})"
+
+    if __name__ == "__main__":
+        pass

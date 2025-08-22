@@ -1,7 +1,5 @@
 from app.player_node import LinkedPlayerNode
 
-import player
-
 class PlayerList: # Player list class
 
     def __init__(self,
@@ -21,4 +19,5 @@ class PlayerList: # Player list class
     def __repr__(self):
         class_name = self.__class__.__name__
         return f"Player({self.uid}, {class_name}{self._value}, {self._value})"
+
 
