@@ -50,10 +50,10 @@ class LinkedPlayerNode: # Linked list
     _prev_node: Node
     _length: int
     _value: None
-    _head: None 
+    _head: None
     _next: None 
     _prev: None 
-    _tail: None 
+    _tail: None
     
 
     def __init__(self,
@@ -89,7 +89,7 @@ class LinkedPlayerNode: # Linked list
         return self._current_node
 
     def tail_node(self):
-        return self.tail_node
+        return self._tail
 
     def push_node(self, node): # Function to add node or head node
         self._current_node = node
