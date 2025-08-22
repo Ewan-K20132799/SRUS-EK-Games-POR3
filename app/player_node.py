@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from player import Player
+from app.player import Player
 
 
 def key_uid(): # Key function for player uid

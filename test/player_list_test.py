@@ -11,6 +11,7 @@ import app.player_list # Import statement for player list
 
 import app.player_node # Import statement for player node
 
+
 class PlayerListTest(unittest.TestCase):
 
     def test_is_empty(self):
@@ -47,5 +48,8 @@ class PlayerListTest(unittest.TestCase):
         else:
             return 0
 
-    def test_display(self, forward):
-        if display is
+    def test_display(self):
+        if app.player_list.PlayerList.display is app.player_list.PlayerList.display:
+            return True
+        else:
+            return False
