@@ -2,10 +2,6 @@ from __future__ import annotations
 
 from player import Player
 
-
-
-
-
 class PlayerNode:
 
     Node: None
