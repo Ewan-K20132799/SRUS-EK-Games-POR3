@@ -2,7 +2,13 @@ from __future__ import annotations
 
 from player import Player
 
-class PlayerNode:
+
+def key_uid(): # Key function for player uid
+    player = Player.uid
+    return player
+
+
+class PlayerNode: # Player node class
 
     Node: None
     value: int
@@ -13,32 +19,29 @@ class PlayerNode:
                  value=int,
                  _next: next_node = None
                  ) -> None:
-        self.Player = Player
+        self.Player = Player # Introducing class import
         self._player = player
         self._value = value
         self.next = _next
 
-    @property
+    @property # Value property
     def value(self):
-        return Player
+        return self._value
 
-    @value.setter
+    @value.setter # Value setter
     def value(self, value):
         self._value = value
 
-    def key_uid(self):
-        player = Player.uid
-        return player
-
-    def __str__(self):
+    def __str__(self): # String value
         return str(self.value)
 
     def __repr__(self):
         class_name = self.__class__.__name__
         return f"Player({self.Player.uid}, {class_name}{self.Player.name}, {self._value})"
+        # repr return values
 
 
-class LinkedPlayerNode:
+class LinkedPlayerNode: # Linked list
     Node: None
     node: Node
     root: Node
@@ -89,36 +92,12 @@ class LinkedPlayerNode:
         return self.tail_node
 
     def push_node(self, node): # Function to add node or head node
-        if self._head:
-            self.root = node
-        self._current_node = node
-        self._length += 1
-        return self
-
-    def push_tail_node(self, node): # Function to add tail node
-        if self._tail:
-            self._next_node = self._tail
         self._current_node = node
         self._length += 1
         return self
 
     def pop_node(self): # Function to delete node or head node
-        if self._head:
-            self._next_node = self._head
-            self._current_node = self._current_node.next_node
-            self._length -= 1
-            return self._head
         self._current_node = self._current_node.next_node
-        self._length -= 1
-        return self
-
-    def pop_tail_node(self): # Function to delete tail node
-        if self._tail:
-            self._current_node = self._current_node.prev_node
-            self._prev_node = self._tail
-            self._length -= 1
-            return self._tail
-        self._current_node = self._current_node.prev_node
         self._length -= 1
         return self
 
