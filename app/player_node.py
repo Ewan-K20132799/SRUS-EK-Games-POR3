@@ -1,27 +1,23 @@
 from __future__ import annotations
 
-from poetry.console.commands import self
-
 from player import Player
 
-from typing import Any, Iterator
 
-def key_uid(Player):
-    player = Player
-    return player.uid
+
 
 
 class PlayerNode:
 
     Node: None
     value: int
-    next_node: Node | None
+    next_node: Node 
 
     def __init__(self,
                  player,
                  value=int,
-                 _next: Node | None = None
+                 _next: next_node = None
                  ) -> None:
+        self.Player = Player
         self._player = player
         self._value = value
         self.next = _next
@@ -34,16 +30,16 @@ class PlayerNode:
     def value(self, value):
         self._value = value
 
-    @key_uid
-    def uid(self):
-        return Player.uid
+    def key_uid(self):
+        player = Player.uid
+        return player
 
     def __str__(self):
         return str(self.value)
 
     def __repr__(self):
         class_name = self.__class__.__name__
-        return f"Player({self.uid}, {class_name}{self._value}, {self._value})"
+        return f"Player({self.Player.uid}, {class_name}{self.Player.name}, {self._value})"
 
 
 class LinkedPlayerNode:
@@ -55,23 +51,26 @@ class LinkedPlayerNode:
     _prev_node: Node
     _length: int
     _value: None
-    _head: None | LinkedPlayerNode
-    _next: None | LinkedPlayerNode
-    _tail: None | LinkedPlayerNode
-
+    _head: None 
+    _next: None 
+    _prev: None 
+    _tail: None 
+    
 
     def __init__(self,
                  player,
                  value=list[int],
-                 _next: Node | None = None
+                 _next: Node = None,
                  ) -> None:
+        self.Player = Player
         self._root = player
-        self._value = value
+        self._value = None
         self.next = _next
         self._length = len(value)
         self._current_node = self._root
         self._head = None
         self._next = None
+        self._prev = None
         self._tail = None
 
     def __len__(self):
@@ -93,7 +92,7 @@ class LinkedPlayerNode:
     def tail_node(self):
         return self.tail_node
 
-    def push_node(self, node): # Function to add node
+    def push_node(self, node): # Function to add node or head node
         if self._head:
             self.root = node
         self._current_node = node
@@ -102,12 +101,12 @@ class LinkedPlayerNode:
 
     def push_tail_node(self, node): # Function to add tail node
         if self._tail:
-            self.next_node = self._tail
+            self._next_node = self._tail
         self._current_node = node
         self._length += 1
         return self
 
-    def pop_node(self): # Function to delete node
+    def pop_node(self): # Function to delete node or head node
         if self._head:
             self._next_node = self._head
             self._current_node = self._current_node.next_node
@@ -120,7 +119,7 @@ class LinkedPlayerNode:
     def pop_tail_node(self): # Function to delete tail node
         if self._tail:
             self._current_node = self._current_node.prev_node
-            self.prev_node = self._tail
+            self._prev_node = self._tail
             self._length -= 1
             return self._tail
         self._current_node = self._current_node.prev_node
@@ -128,11 +127,11 @@ class LinkedPlayerNode:
         return self
 
     def __str__(self):
-        return str(self.value)
+        return str(self._value)
 
     def __repr__(self):
         class_name = self.__class__.__name__
-        return f"Player({self.uid}, {class_name}{self._value}, {self._value})"
+        return f"Player({self.Player.uid}, {class_name}{self.Player.name}, {self._value})"
 
     if __name__ == "__main__":
         pass
