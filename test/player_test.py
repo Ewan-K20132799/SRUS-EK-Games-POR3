@@ -1,7 +1,10 @@
 import unittest  # Import statement for unit test
 
-from player import Player  # Import statement for Player class
+import sys
 
+sys.path.insert(0,'../Source/Repo/SRUS-EK-Games/SRUS-EK-Games/')
+
+from app.player import Player # Import statement for Player class
 
 class TestPlayer(unittest.TestCase):  # Test class for player.py module
 
