@@ -53,5 +53,12 @@ class PlayerList: # Player list class
             return self
         return LinkedPlayerNode(self._tail)
 
+    def display(self, forward):
+        if forward (self._head and self._tail):
+            return self._head.display(forward)
+        else:
+            return self._tail.display(forward)
+
+
 
 

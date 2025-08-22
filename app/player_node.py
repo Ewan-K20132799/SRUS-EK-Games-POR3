@@ -4,8 +4,8 @@ from player import Player
 
 
 def key_uid(): # Key function for player uid
-    player = Player.uid
-    return player
+    node = Player.uid
+    return node
 
 
 class PlayerNode: # Player node class
@@ -15,12 +15,12 @@ class PlayerNode: # Player node class
     next_node: Node 
 
     def __init__(self,
-                 player,
+                 node: Node,
                  value=int,
                  _next: next_node = None
                  ) -> None:
         self.Player = Player # Introducing class import
-        self._player = player
+        self._node = node
         self._value = value
         self.next = _next
 
@@ -57,12 +57,12 @@ class LinkedPlayerNode: # Linked list
     
 
     def __init__(self,
-                 player,
+                 node,
                  value=list[int],
                  _next: Node = None,
                  ) -> None:
         self.Player = Player
-        self._root = player
+        self._root = node
         self._value = None
         self.next = _next
         self._length = len(value)
