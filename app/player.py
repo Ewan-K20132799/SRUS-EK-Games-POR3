@@ -6,5 +6,11 @@ class Player:  # Player class
         self._uid = uid  # private function for uid
         self._name = name  # private function for name
 
+    def uid(self):
+        return self._uid
+
+    def name(self):
+        return self._name
+
     def __str__(self):  # String function for returning uid and name
         return self  # Returns the string of uid and name

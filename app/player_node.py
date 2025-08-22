@@ -1,8 +1,9 @@
 from player import Player
 
 
-def key_uid(args):
-    pass
+def key_uid(Player):
+    player = Player
+    return player.uid
 
 
 class PlayerNode:
@@ -69,6 +70,12 @@ class LinkedPlayerNode:
 
     def next_node(self):
         return self.next
+
+    def current_node(self):
+        return self._current_node
+
+    def prev_node(self):
+        return self.prev_node
 
     def __str__(self):
         return str(self.value)
