@@ -1,3 +1,5 @@
+from functools import total_ordering
+
 import unittest  # Import statement for unit test
 
 import sys # Sys import for accessing app directory for test
@@ -35,18 +37,26 @@ class TestPlayer(unittest.TestCase):  # Test class for player.py module
             assert set == int
 
     def test_score_returns_int(self):
-        score_t = app.player.Player.score
+        score_t = app.player.Player.scores
         return self, score_t
 
     def test_repr_return(self):
         repr_state = app.player.Player.__name__
-        if repr_state == [Player('01', "Alice", 10)]:
+        if repr_state == [Player(uid='01', name="Alice", score=10)]:
             return repr_state
         else:
             raise ValueError
 
+    @total_ordering
     def test_sort_players(self):
-        alice = Player('01', "Alice", 10)
-        bob = Player('02', "Bob", 5)
 
-        self.assertGreater(alice, bob)
+        alice = Player(uid='01', name="Alice", score=10)
+        bob = Player(uid='02', name="Bob", score=5)
+        charlie = Player(uid='03', name="Charlie", score=15)
+
+        self.assertTrue(alice > bob)
+        self.assertTrue(alice < charlie)
+
+        print(f' 1. comparing players:{alice > bob}')
+        print(f' 2. comparing players:{alice < charlie}')
+        print(f'Sorted_scores: {sorted([alice, bob, charlie])}')
