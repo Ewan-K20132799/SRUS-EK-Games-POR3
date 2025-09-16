@@ -14,6 +14,7 @@ class Player:  # Player class
 
     def score(self):
 
+
     def __str__(self):  # String function for returning uid and name
         return self  # Returns the string of uid and name
 
