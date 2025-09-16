@@ -11,6 +11,8 @@ sys.path.insert(0,'../Source/Repo/SRUS-EK-Games-POR3/')
 
 from app.player import Player # Import statement for Player class
 
+import random
+
 
 class TestPlayer(unittest.TestCase):  # Test class for player.py module
 
@@ -60,3 +62,23 @@ class TestPlayer(unittest.TestCase):  # Test class for player.py module
         print(f' 1. comparing players:{alice > bob}')
         print(f' 2. comparing players:{alice < charlie}')
         print(f'Sorted_scores: {sorted([alice, bob, charlie])}')
+
+    def test_sort_players_descending(self):
+
+        players = [Player(uid='01', name="Alice", score=10), Player(uid='02', name="Bob", score=5),
+                    Player(uid='03', name="Charlie", score=15)]
+
+        manual_sort = [Player(uid='03', name="Charlie", score=15), Player(uid='01', name="Alice", score=10),
+                          Player(uid='02', name="Bob", score=5)]
+
+        sorted_players = Player.quick_sort(players.reverse)
+
+        self.assertListEqual(sorted_players, manual_sort)
+
+    def test_1000(self):
+
+        players = [Player(f"Player {i}", uid=f"{i:03}", score=random.randint(0, 1000)) for i in range(1000)]
+
+        sorted_players = Player.quick_sort(players)
+
+        self.assertListEqual(players, sorted_players)

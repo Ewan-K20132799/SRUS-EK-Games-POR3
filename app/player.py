@@ -50,3 +50,16 @@ class Player:  # Player class
     def __repr__(self):
         return f'name_{self.name}'
 
+    @classmethod
+    def quick_sort(cls, array):
+        if len(array) <= 1:
+            return array
+        pivot = array[0]
+        left = []
+        right = []
+        for x in array[1:]:
+            if x < pivot:
+                left.append(x)
+            else:
+                right.append(x)
+        return cls.quick_sort(left) + [pivot] + cls.quick_sort(right)

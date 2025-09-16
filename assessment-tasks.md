@@ -224,7 +224,10 @@ def sort_quickly(arr):
 
 What is the expected time and space complexity of the above algorithm? You can answer using big O or in plain English but in both cases you MUST justify your answer.
 
-> Answer here
+> The expected time complexity would be dependent on the space complexity. For fewer entries this method would be quicker
+> as there is more space available in memory for the array which requires a row of memory rather than a single slot like a 
+> linked list would. For a large amount of entries the builtin method ends up being significantly better as it can place
+> entries in any slot of memory while the method above would require shifting the entries around in memory.
 
 ### 5.2. Task: Implement the custom sorting algorithm
 
@@ -239,7 +242,17 @@ Add a separate test case to `test_player.py` to test your custom sorting algorit
 Include your code below:
 
 ```python
-# YOUR CUSTOM Sorting here
+    def test_sort_players_descending(self):
+
+        players = [Player(uid='01', name="Alice", score=10), Player(uid='02', name="Bob", score=5),
+                    Player(uid='03', name="Charlie", score=15)]
+
+        manual_sort = [Player(uid='03', name="Charlie", score=15), Player(uid='01', name="Alice", score=10),
+                          Player(uid='02', name="Bob", score=5)]
+
+        sorted_players = Player.quick_sort(players)
+
+        self.assertListEqual(sorted_players, manual_sort)
 ```
 
 #### 5.2.3. Success criteria
@@ -270,7 +283,13 @@ Include your test case below:
 
 ```python
 
-# YOUR TEST CASE HERE
+    def test_1000(self):
+
+        players = [Player(f"Player {i}", uid=f"{i:03}", score=random.randint(0, 1000)) for i in range(1000)]
+
+        sorted_players = Player.quick_sort(players)
+
+        self.assertListEqual(players, sorted_players)
 
 ```
 
@@ -292,7 +311,16 @@ Create a test case that tries to sort 1000 players that are already sorted.
 If you get a failure, include the failure below:
 
 ```text
-YOUR FAILURE HERE
+Ran 1 test in 0.005s
+
+FAILED (errors=1)
+
+Error
+Traceback (most recent call last):
+  File "C:\Users\KEENAE\source\repos\SRUS-EK-Games-POR3\test\player_test.py", line 80, in test_1000
+    players = [Player(f"Player {i}", uid=f"{i:03}", score=random.randint(0, 1000)) for i in range(1000)]
+               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Player.__init__() got multiple values for argument 'uid'
 ```
 
 ##### 5.3.4.1 Question: Why does the algorithm fail on presorted values?
