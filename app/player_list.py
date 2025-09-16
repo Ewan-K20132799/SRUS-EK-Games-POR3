@@ -2,10 +2,10 @@ from app.player_node import LinkedPlayerNode
 
 
 def is_empty():
-   if LinkedPlayerNode is None:
-       return True
-   else:
-       return False
+    if LinkedPlayerNode is None:
+        return True
+    else:
+        return False
 
 
 class PlayerList: # Player list class
@@ -36,16 +36,15 @@ class PlayerList: # Player list class
         else:
             return LinkedPlayerNode(self._head)
 
-
     def push_tail_node(self, node):  # Function to add tail node
         if self._tail:
-          LinkedPlayerNode._next_node = self._tail
-          LinkedPlayerNode._current_node = node
-          LinkedPlayerNode.push_node(self._tail, node)
-          return self
+            LinkedPlayerNode._next_node = self._tail
+            LinkedPlayerNode._current_node = node
+            LinkedPlayerNode.push_node(self._tail, node)
+            return self
         return LinkedPlayerNode(self._tail)
 
-    def pop_tail_node(self, node): # Function to delete tail node
+    def pop_tail_node(self, node):  # Function to delete tail node
         if self._tail:
             LinkedPlayerNode._current_node = LinkedPlayerNode._current_node.prev_node
             LinkedPlayerNode._prev_node = self._tail
