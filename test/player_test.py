@@ -30,7 +30,7 @@ class TestPlayer(unittest.TestCase):  # Test class for player.py module
     def test_set_score(self):
         set = app.player.Player.__set__
         if set != int:
-            assert ValueError
+            raise ValueError
         else:
             assert set == int
 
@@ -40,7 +40,13 @@ class TestPlayer(unittest.TestCase):  # Test class for player.py module
 
     def test_repr_return(self):
         repr_state = app.player.Player.__name__
-        if repr_state == [Player('01', 'Alice', 10)]:
+        if repr_state == [Player('01', "Alice", 10)]:
             return repr_state
         else:
             raise ValueError
+
+    def test_sort_players(self):
+        alice = Player('01', "Alice", 10)
+        bob = Player('02', "Bob", 5)
+
+        self.assertGreater(alice, bob)
